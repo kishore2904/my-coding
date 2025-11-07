@@ -1,29 +1,9 @@
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-
-class Employee {
-    private int id;
-    private String name;
-    private double salary;
-
-    // Constructor
-    public Employee(int id, String name, double salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-    }
-
-    // Getters
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public double getSalary() { return salary; }
-
-    @Override
-    public String toString() {
-        return id + " - " + name + " - " + salary;
-    }
-}
-
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Main {
 
@@ -32,13 +12,54 @@ public class Main {
     {
 
         List<Employee> employees = List.of(
-                new Employee(101, "Alice", 50000),
-                new Employee(102, "Bob", 40000),
-                new Employee(103, "Charlie", 60000),
-                new Employee(104, "David", 40000)
+                new Employee(101, "Alice", 600),
+                new Employee(102, "Bob", 400540),
+                new Employee(103, "Charlie", 600),
+                new Employee(104, "David", 44000)
         );
+        //Stream Filter
+        System.out.println("Stream Filter");
+        employees.stream().filter(salary-> salary.getId()%2==0).forEach(System.out::println);
 
-        System.out.println(employees.get(0).getId());
+        //Stream map
+        System.out.println("Stream map");
+        employees.stream().map(name -> name.getName().toUpperCase()).forEach(System.out::println);
 
+        //Stream sort
+        System.out.println("Stream sort");
+        employees.stream().sorted(Comparator.comparing(Employee::getSalary)).forEach(System.out::println);
+
+        //Stream sort reverse order
+        System.out.println("Stream sort reverse order");
+        employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).forEach(System.out::println);
+
+        //Stream distinct( remove duplicate)
+        System.out.println("Stream distinct( remove duplicate)");
+        List<Integer> numbers = List.of(1,6,5,5,5);
+        numbers.stream().distinct().forEach(System.out::println);
+
+        //Stream distinct ( remove duplicate using helper method)
+        System.out.println("Stream distinct (remove duplicate)");
+        employees.stream().filter(distinctByKey(Employee::getSalary)).forEach(System.out::println);
+
+        //Stream limit
+        System.out.println("Stream Limit");
+        employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(2).forEach(System.out::println);
+
+        //Stream skip
+        System.out.println("Stream skip");
+        long num = employees.stream().skip(2).count();
+        System.out.println("Count : "+num);
+
+        //Stream peek
+        System.out.println("Stream peek");
+        employees.stream().peek(n-> System.out.println("Before transform\n"+n.getName())).map(n-> n.getName().toUpperCase()).forEach(System.out::println);
+
+    }
+
+
+    public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Set<Object> seen = ConcurrentHashMap.newKeySet();
+        return t -> seen.add(keyExtractor.apply(t));
     }
 }
