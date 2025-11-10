@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -15,7 +16,7 @@ public class Main {
 
         List<Employee> employees = List.of(
                 new Employee(101, "Alice", 600),
-                new Employee(102, "Bob", 400540),
+                new Employee(102, "Aob", 400540),
                 new Employee(103, "Charlie", 600),
                 new Employee(104, "David", 44000)
         );
@@ -56,6 +57,9 @@ public class Main {
         //Stream peek
         System.out.println("Stream peek");
         employees.stream().peek(n-> System.out.println("Before transform\n"+n.getName())).map(n-> n.getName().toUpperCase()).forEach(System.out::println);
+
+        List<Employee> employeesList = employees.stream().filter(employee -> employee.getName().startsWith("A")).toList();
+        System.out.println(employeesList);
 
     }
 
