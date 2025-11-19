@@ -45,22 +45,43 @@ public class Java8InterviewQuestionsStream {
 
         // 5. Second-Highest number from array
 
-        int[] numbers = {5,9,11,2,8,21,1};
+        int[] numbers = {5, 9, 11, 2, 8, 21, 1};
         Integer secondHighest = Arrays.stream(numbers).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-        System.out.println("Second Highest number: "+secondHighest);
+        System.out.println("Second Highest number: " + secondHighest);
 
         // 6. Find the longest string in given array
 
-        String[] arrayList = {"Java", "Springboot","Python"};
+        String[] arrayList = {"Java", "Springboot", "Python"};
 
         String s = Arrays.stream(arrayList).reduce((word1, word2) -> word1.length() > word2.length() ? word1 : word2).get();
-        System.out.println("Longest String: "+ s);
+        System.out.println("Longest String: " + s);
 
         // 7. Find the values that start with 1
 
-        List<Integer> integerList = List.of(1,5,6,7,11,21,16,111);
+        List<Integer> integerList = List.of(1, 5, 6, 7, 11, 21, 16, 111);
         List<String> valueStartsWith1 = integerList.stream().map(x -> x.toString()).filter(x -> x.startsWith("1")).toList();
-        System.out.println("Value starts with 1: "+valueStartsWith1);
+        System.out.println("Value starts with 1: " + valueStartsWith1);
+
+        //infosys-test,nscc-last,dtcc-next change to infosys nscc dtcc
+        String inputString = "infosys-test,nscc-last,dtcc-next";
+        List<String> stringList = Arrays.stream(inputString.split(","))
+                .map(x -> x.split("-")[0]).toList();
+        System.out.println(stringList);
+
+        // Split the input by non-alphabet
+        String name = "He is a very very good boy, isn't he?";
+
+        // [^A-Za-z]+ => this will split by non-alphabet.
+        // \\d+ => this will split by numbers.
+        // \\s+ => split by space.
+
+
+        List<String> inputArray = Arrays.stream(name.split("[^A-Za-z]+")).toList();
+        System.out.println(inputArray.size());
+        for (String S : inputArray){
+            System.out.println(S);
+        }
+
 
 
     }
