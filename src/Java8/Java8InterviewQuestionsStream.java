@@ -3,6 +3,7 @@ package Java8;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Java8InterviewQuestionsStream {
 
@@ -59,7 +60,7 @@ public class Java8InterviewQuestionsStream {
         // 7. Find the values that start with 1
 
         List<Integer> integerList = List.of(1, 5, 6, 7, 11, 21, 16, 111);
-        List<String> valueStartsWith1 = integerList.stream().map(x -> x.toString()).filter(x -> x.startsWith("1")).toList();
+        List<String> valueStartsWith1 = integerList.stream().map(Object::toString).filter(x -> x.startsWith("1")).toList();
         System.out.println("Value starts with 1: " + valueStartsWith1);
 
         //infosys-test,nscc-last,dtcc-next change to infosys nscc dtcc
@@ -81,6 +82,37 @@ public class Java8InterviewQuestionsStream {
         for (String S : inputArray){
             System.out.println(S);
         }
+
+        List<Integer> result = Stream.of(1,2,3)
+                .peek(n -> System.out.println("Processing: " + n))
+                .map(n -> n * 10)
+                .toList();
+        System.out.println(result);
+
+        List<String> names = List.of("A", "B", "C");
+        names.stream().unordered().forEach(System.out::println);
+
+        int sum = Stream.of(1,2,3).map(n->n*10)
+                .reduce(10, Integer::sum);
+
+        long cnt = Stream.of("a","b","c").count();
+        Optional<Integer> first = Stream.of(1,2,3).findFirst();
+        Optional<Integer> any = List.of(1,2,3).parallelStream().findAny();
+
+        Stream.of(1, 2, 3)
+                .anyMatch(n -> n > 2);
+        boolean resultBoolean = true;
+
+        Stream.of(1, 2, 3)
+                .allMatch(n -> n > 1);
+        boolean resultAllMatch = false;
+
+        boolean resultNonMatch = Stream.of(1,2,0,3)
+                .noneMatch(n -> n <= 0);
+
+
+
+        System.out.println(resultNonMatch);
 
     }
 }
