@@ -1,4 +1,4 @@
-package functional_interface;
+package Topics.functional_interface;
 
 interface Calc {
     int operate(int a, int b);

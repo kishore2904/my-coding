@@ -1,4 +1,4 @@
-package Collections;
+package Topics.Collections;
 
 public class CollectionsExample {
 }

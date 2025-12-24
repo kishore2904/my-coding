@@ -9,7 +9,7 @@ Ideal for Java 8+ / Java 17 developers preparing for interviews.
 - Java 8 or later
 - Basics of:
     - Lambda Expressions
-    - Collections Framework
+    - Topics.Collections Framework
     - Functional Interfaces
 
 ---
@@ -134,7 +134,7 @@ java-streams-practice
 ## ✅ How to Use This Repository
 
 - Solve problems level by level
-- Compare stream vs loop solutions
+- Compare Topics.stream vs loop solutions
 - Add comments explaining logic
 - Add JUnit tests where applicable
 
