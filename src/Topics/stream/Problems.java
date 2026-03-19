@@ -34,7 +34,7 @@ public class Problems {
 //        System.out.println(count);
 
 
-        List<Integer> numbers = List.of(1, 2, 3, 4, 2, 5, 6, 3, 7, 8, 1);
+//        List<Integer> numbers = List.of(1, 2, 3, 4, 2, 5, 6, 3, 7, 8, 1);
 
 
 //        Set<Integer> seen = new HashSet<>();
@@ -59,7 +59,7 @@ public class Problems {
 //        OptionalInt sum = numbers.stream().filter(number -> number % 2 != 0).mapToInt(Integer::intValue).max();
 //        System.out.println(sum);
 
-        List<String> words = List.of("hi", "hello", "world", "java", "stream");
+//        List<String> words = List.of("hi", "hello", "world", "java", "stream");
 
 //        Map<Integer, List<String>> collect = words.stream().collect(Collectors.groupingBy(s -> s.length()));
 //        System.out.println(collect);
@@ -73,6 +73,55 @@ public class Problems {
 
 //        String max = words.stream().max(Comparator.comparing(String::length)).orElse(null);
 //        System.out.println(max);
+
+//        List<String> names = List.of("Kishore", "Ram", "Anu", "Christopher");
+//
+//        String collect = names.stream().collect(Collectors.joining(",")).toUpperCase();
+//        System.out.println(collect);
+
+//        List<String> list = names.stream().sorted(Comparator.comparing(String::length)).toList();
+//        System.out.println(list);
+
+//        List<String> list = names.stream().sorted().toList();
+//        System.out.println(list);
+
+//        List<String> list = names.stream().sorted(Comparator.reverseOrder()).toList();
+//        System.out.println(list);
+
+//        List<Integer> nums = List.of(10, 20, 5, 30, 25, 40);
+//        List<Integer> list = nums.stream().sorted(Comparator.reverseOrder()).limit(3).toList();
+//        System.out.println(list);
+
+//        List<Integer> list = nums.stream().sorted().skip(1).limit(1).toList();
+//        System.out.println(list);
+
+        String input = "programming";
+
+//        Map<Character, Long> collect = input.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//        System.out.println(collect);
+
+//        Character c1 = input.chars().mapToObj(c -> (char) c).
+//                collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())).
+//                entrySet().stream().filter(e -> e.getValue() == 1).
+//                map(Map.Entry::getKey).findFirst().orElse(null);
+//        System.out.println(c1);
+
+//        Character c1 = input.chars().mapToObj(c -> (char) c).
+//                collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).
+//                entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).orElse(null);
+
+        Character result = input.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(
+                        c -> c,
+                        Collectors.counting()
+                ))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())   // highest frequency
+                .map(Map.Entry::getKey)
+                .orElse(null);
+
+        System.out.println(result);
     }
 
 }
