@@ -14,10 +14,10 @@ public class Main {
     {
 
         List<Employee> employees = List.of(
-                new Employee(101, "Alice", 600),
-                new Employee(102, "Aob", 400540),
-                new Employee(103, "Charlie", 600),
-                new Employee(104, "David", 44000)
+                new Employee(101, "Alice", 600,"ECE"),
+                new Employee(102, "Aob", 400540,"ECE"),
+                new Employee(103, "Charlie", 600,"ECE"),
+                new Employee(104, "David", 44000,"ECE")
         );
         //Stream Filter
         System.out.println("Stream Filter");
