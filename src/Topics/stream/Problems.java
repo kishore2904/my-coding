@@ -123,6 +123,36 @@ public class Problems {
 //
 //        System.out.println(result);
 
+//        List<List<Integer>> list = List.of(
+//                List.of(1,2,3),
+//                List.of(4,5,6),
+//                List.of(7,8,9)
+//        );
+//
+//        List<Integer> list1 = list.stream().flatMap(List::stream).filter(n->n%2==0).toList();
+//        System.out.println(list1);
+
+//        List<String> sentences = List.of(
+//                "Java is powerful",
+//                "Streams are useful"
+//        );
+//
+//        List<String> list = sentences.stream().map(s -> s.split(" ")).flatMap(Arrays::stream).filter(words->words.length()>4).toList();
+//        System.out.println(list);
+
+//        Map<String, List<String>> data = Map.of(
+//                "fruits", List.of("apple", "banana"),
+//                "vegetables", List.of("carrot", "beans")
+//        );
+//
+//        List<String> list = data.entrySet().stream().flatMap(v -> v.getValue().stream()).toList();
+//        System.out.println(list);
+
+//        List<String> list = data.entrySet().stream().flatMap(v -> v.getValue().stream()).map(String::toUpperCase).toList();
+//        System.out.println(list);
+
+//        long count = data.entrySet().stream().flatMap(v -> v.getValue().stream()).count();
+//        System.out.println(count);
     }
 
 }
