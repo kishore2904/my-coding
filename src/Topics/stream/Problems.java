@@ -110,18 +110,19 @@ public class Problems {
 //                collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).
 //                entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).map(Map.Entry::getKey).orElse(null);
 
-        Character result = input.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(
-                        c -> c,
-                        Collectors.counting()
-                ))
-                .entrySet().stream()
-                .max(Map.Entry.comparingByValue())   // highest frequency
-                .map(Map.Entry::getKey)
-                .orElse(null);
+//        Character result = input.chars()
+//                .mapToObj(c -> (char) c)
+//                .collect(Collectors.groupingBy(
+//                        c -> c,
+//                        Collectors.counting()
+//                ))
+//                .entrySet().stream()
+//                .max(Map.Entry.comparingByValue())   // highest frequency
+//                .map(Map.Entry::getKey)
+//                .orElse(null);
+//
+//        System.out.println(result);
 
-        System.out.println(result);
     }
 
 }
