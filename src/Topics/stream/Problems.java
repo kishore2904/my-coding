@@ -16,6 +16,15 @@ public class Problems {
 //                new Employee(105, "Felta", 6050, "MECH"),
 //                new Employee(106, "Eagle", 30000, "MECH")
 //        );
+
+        /*Names in descending order*/
+//        List<String> reverseOrderedNames = employees.stream().map(Employee::getName).sorted(Comparator.reverseOrder()).toList();
+//        System.out.println(reverseOrderedNames);
+
+// Second largest salary
+
+//        Double secondLargestSalary = employees.stream().map(Employee::getSalary).sorted(Comparator.reverseOrder()).skip(1).findFirst().orElse(null);
+//        System.out.println("Second Largest Salary = "+secondLargestSalary);
 //
 //
 //        Map<String, Double> collect = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)));
@@ -75,7 +84,8 @@ public class Problems {
 //        System.out.println(max);
 
 //        List<String> names = List.of("Kishore", "Ram", "Anu", "Christopher");
-//
+//        Map<Integer, List<String>> collect = names.stream().collect(Collectors.groupingBy(s -> s.length()));
+//        System.out.println(collect);
 //        String collect = names.stream().collect(Collectors.joining(",")).toUpperCase();
 //        System.out.println(collect);
 
@@ -89,13 +99,15 @@ public class Problems {
 //        System.out.println(list);
 
 //        List<Integer> nums = List.of(10, 20, 5, 30, 25, 40);
+//        Find the square root of number
+//        nums.stream().forEach(n-> System.out.println("The square root of "+n+" is "+Math.sqrt(n)));
 //        List<Integer> list = nums.stream().sorted(Comparator.reverseOrder()).limit(3).toList();
 //        System.out.println(list);
 
 //        List<Integer> list = nums.stream().sorted().skip(1).limit(1).toList();
 //        System.out.println(list);
 
-        String input = "programming";
+//        String input = "programming";
 
 //        Map<Character, Long> collect = input.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 //        System.out.println(collect);
@@ -153,6 +165,50 @@ public class Problems {
 
 //        long count = data.entrySet().stream().flatMap(v -> v.getValue().stream()).count();
 //        System.out.println(count);
+
+        Department d1 = new Department("IT", List.of(50000.0, 60000.0));
+        Department d2 = new Department("HR", List.of(30000.0));
+        Department d3 = new Department("Finance", List.of(70000.0, 80000.0));
+        Department d4 = new Department("Sales", List.of(40000.0, 45000.0));
+
+        Employee e1 = new Employee(1, "Arun", 55000, null);
+        e1.setDepartment(List.of(d1, d2));
+
+        Employee e2 = new Employee(2, "Divya", 75000, null);
+        e2.setDepartment(List.of(d3, d1));
+
+        Employee e3 = new Employee(3, "Kiran", 42000, null);
+        e3.setDepartment(List.of(d4));
+
+        List<Employee> employees = List.of(e1, e2, e3);
+
+
+//    /*Using flat map display salary based on department*/
+//        Map<String, List<Double>> department_based_salary = employees.stream().
+//                flatMap(employee -> employee.getDepartment().stream()).
+//                collect(
+//                        Collectors.groupingBy(
+//                                Department::getName,
+//                                Collectors.flatMapping(
+//                                        department -> department.getSalaries().stream(),
+//                                        Collectors.toList())));
+//
+//        System.out.println(department_based_salary);
+//
+//        /* Using flat map display average of department*/
+//
+//        Map<String, Double> average_of_each_department = employees.stream().
+//                flatMap(department -> department.getDepartment().stream()).
+//                collect(
+//                        Collectors.groupingBy(
+//                                Department::getName,
+//                                Collectors.averagingDouble(
+//                                        department -> department.getSalaries().stream().
+//                                                mapToDouble(Double::doubleValue).
+//                                                average().orElse(0.0))));
+//
+//        System.out.println(average_of_each_department);
+
     }
 
 }
