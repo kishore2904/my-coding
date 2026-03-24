@@ -8,14 +8,19 @@ import java.util.stream.Stream;
 
 public class Problems {
     public static void main(String[] args) {
-//        List<Employee> employees = List.of(
-//                new Employee(101, "Alice", 60000, "ECE"),
-//                new Employee(102, "Aob", 400540, "ECE"),
-//                new Employee(103, "Charlie", 600, "MECH"),
-//                new Employee(104, "David", 44000, "CSE"),
-//                new Employee(105, "Felta", 6050, "MECH"),
-//                new Employee(106, "Eagle", 30000, "MECH")
-//        );
+        List<Employee> employees = List.of(
+                new Employee(101, "Alice", 60000, "ECE"),
+                new Employee(102, "Aob", 400540, "ECE"),
+                new Employee(103, "Charlie", 600, "MECH"),
+                new Employee(104, "David", 44000, "CSE"),
+                new Employee(105, "Felta", 6050, "MECH"),
+                new Employee(106, "Eagle", 30000, "MECH")
+        );
+
+        /*Average of the employee*/
+
+        double average_of_employees = employees.stream().mapToDouble(Employee::getSalary).average().orElse(0.0);
+        System.out.println("Average of the employees is: "+String.format("%.3f",average_of_employees));
 
         /*Names in descending order*/
 //        List<String> reverseOrderedNames = employees.stream().map(Employee::getName).sorted(Comparator.reverseOrder()).toList();
@@ -83,7 +88,11 @@ public class Problems {
 //        String max = words.stream().max(Comparator.comparing(String::length)).orElse(null);
 //        System.out.println(max);
 
-//        List<String> names = List.of("Kishore", "Ram", "Anu", "Christopher");
+//        List<String> names = List.of("Kishore", "Ram", "Anusha", "Anjana", "Christopher");
+//        /* Data starting with letter A */
+//        List<String> names_start_with_A = names.stream().filter(name -> name.startsWith("A")).toList();
+//        System.out.println(names_start_with_A);
+
 //        Map<Integer, List<String>> collect = names.stream().collect(Collectors.groupingBy(s -> s.length()));
 //        System.out.println(collect);
 //        String collect = names.stream().collect(Collectors.joining(",")).toUpperCase();
@@ -166,21 +175,21 @@ public class Problems {
 //        long count = data.entrySet().stream().flatMap(v -> v.getValue().stream()).count();
 //        System.out.println(count);
 
-        Department d1 = new Department("IT", List.of(50000.0, 60000.0));
-        Department d2 = new Department("HR", List.of(30000.0));
-        Department d3 = new Department("Finance", List.of(70000.0, 80000.0));
-        Department d4 = new Department("Sales", List.of(40000.0, 45000.0));
-
-        Employee e1 = new Employee(1, "Arun", 55000, null);
-        e1.setDepartment(List.of(d1, d2));
-
-        Employee e2 = new Employee(2, "Divya", 75000, null);
-        e2.setDepartment(List.of(d3, d1));
-
-        Employee e3 = new Employee(3, "Kiran", 42000, null);
-        e3.setDepartment(List.of(d4));
-
-        List<Employee> employees = List.of(e1, e2, e3);
+//        Department d1 = new Department("IT", List.of(50000.0, 60000.0));
+//        Department d2 = new Department("HR", List.of(30000.0));
+//        Department d3 = new Department("Finance", List.of(70000.0, 80000.0));
+//        Department d4 = new Department("Sales", List.of(40000.0, 45000.0));
+//
+//        Employee e1 = new Employee(1, "Arun", 55000, null);
+//        e1.setDepartment(List.of(d1, d2));
+//
+//        Employee e2 = new Employee(2, "Divya", 75000, null);
+//        e2.setDepartment(List.of(d3, d1));
+//
+//        Employee e3 = new Employee(3, "Kiran", 42000, null);
+//        e3.setDepartment(List.of(d4));
+//
+//        List<Employee> employees = List.of(e1, e2, e3);
 
 
 //    /*Using flat map display salary based on department*/
