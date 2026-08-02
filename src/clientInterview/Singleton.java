@@ -1,0 +1,17 @@
+package clientInterview;
+
+public class Singleton {
+
+    private static Singleton instance;
+
+    public Singleton (){
+    }
+
+    private static Singleton getInstance(){
+        if(instance == null){
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+}
