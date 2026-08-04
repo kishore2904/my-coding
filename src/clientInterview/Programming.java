@@ -123,5 +123,29 @@ public class Programming {
                 .findFirst()
                 .ifPresent(employee -> System.out.println("Second-largest salary: " + employee.getSalary()));
 
+        /*Find the sum of all numbers.*/
+
+        int sum = list.stream().mapToInt(Integer::intValue).sum();
+        System.out.println("Sum of all numbers: " + sum);
+
+        int sum_of_age = employeeList.stream().mapToInt(Employee::getAge).sum();
+        System.out.println("Sum of all ages: " + sum_of_age);
+
+        double average_of_number = list.stream().mapToInt(Integer::intValue).average().orElse(0);
+        System.out.println("Average of all numbers: " + average_of_number);
+
+        double average_of_salary = employeeList.stream().mapToDouble(Employee::getSalary).average().orElse(0);
+        System.out.println("Average of all salaries: " + average_of_salary);
+
+        /*Find the first element.*/
+        Integer firstElement = list.stream().findFirst().orElse(null);
+        System.out.println("First element: " + firstElement);
+
+        /*Find any element.*/
+        Integer anyElement = list.stream().findAny().orElse(null);
+        System.out.println("Any element: " + anyElement);
+
+        String joined_names = employeeList.stream().map(Employee::getName).collect(Collectors.joining(","));
+        System.out.println("Joined names: " + joined_names);
     }
 }
