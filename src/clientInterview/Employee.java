@@ -1,6 +1,6 @@
 package clientInterview;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
 
     private int age;
     private String name;
@@ -30,5 +30,11 @@ public class Employee {
 
     public double getSalary() {
         return salary;
+    }
+
+
+    @Override
+    public int compareTo(Employee o) {
+        return Double.compare(this.salary, o.salary);
     }
 }
